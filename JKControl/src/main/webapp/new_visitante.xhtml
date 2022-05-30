@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/_template.xhtml">
+	<ui:define name="content">
+		
+		<!-- FORM -->
+		<h:form enctype="multipart/form-data">
+		    <p:messages id="messages" closable="true">
+		    	<p:autoUpdate/>
+		    </p:messages>
+		    
+			<p:card style="width: 25em; margin: 1em auto">
+
+				<f:facet name="title">Visitante</f:facet>
+
+				<div class="ui-fluid">
+					<div class="p-field">
+						<label for="nomeVisitante">Nome do visitante</label>
+						<p:inputText 
+							value="#{visitanteBean.visitante.nomeVisitante}" 
+							id="name" 
+							type="text" 
+							required="true"
+							requiredMessage="O campo nome é obrigatório"
+						>
+							<f:ajax event="blur" render="messages" />
+							
+						</p:inputText>
+					</div>
+					
+					<div class="p-field">
+						<label for="dtNasc">Data de nascimento</label>
+						<p:datePicker
+							value="#{visitanteBean.visitante.dtNasc}"
+							id="dtNasc" 
+							required="true"
+							requiredMessage="O campo data de nascimento é obrigatório"
+							>
+						</p:datePicker>
+					</div>
+					
+					<div class="p-field">
+						<label for="cpf">Cpf visitante</label>
+						<p:inputText
+							value="#{visitanteBean.visitante.cpf}"
+							id="cpf" 
+							required="true"
+							requiredMessage="O campo cpf é obrigatório"
+							>
+							<f:ajax event="blur" render="messages" />
+							<f:validateLength minimum="11" maximum="14" />
+							
+						</p:inputText>
+					</div>
+					
+					<div class="p-field">
+						<label for="rg">rg</label>
+						<p:inputText
+							value="#{visitanteBean.visitante.rg}"
+							id="rg" 
+							required="true"
+							requiredMessage="O campo rg é obrigatório"
+							>
+							<f:ajax event="blur" render="messages" />
+						</p:inputText>
+					</div>
+					
+					<div class="p-field">
+						<label for="digitoRg">Digito do RG visitante</label>
+						<p:inputText
+							value="#{visitanteBean.visitante.digitoRg}"
+							id="digitorg" 
+							required="true"
+							requiredMessage="O campo digito do rg é obrigatório"
+							>
+							<f:ajax event="blur" render="messages" />
+							<f:validateLength minimum="1" maximum="1" />
+							
+						</p:inputText>
+					</div>
+					
+					<div class="p-field">
+						<label for="dtCadastro">Data de cadastro visitante</label>
+						<p:datePicker
+							value="#{visitanteBean.visitante.dtCadastro}"
+							id="dtCadastro" 
+							required="true"
+							requiredMessage="O campo data de cadastro é obrigatório"
+							>
+						</p:datePicker>
+					</div>
+					
+					
+					
+					<div class="p-field">
+						<label for="image">Image File Visit: </label>
+						<p:fileUpload 
+							value="#{visitanteBean.image}" 
+							id="image" 
+							mode="simple" 
+							skinSimple="true"
+						/>
+					</div>
+
+				</div>
+
+				<f:facet name="footer">
+					<p:commandButton action="#{visitanteBean.save()}" icon="pi pi-check"
+						value="Save" />
+					<p:commandButton icon="pi pi-times" value="Cancel"
+						styleClass="ui-button-secondary" style="margin-left: .5em" />
+				</f:facet>
+			</p:card>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+
+
+
+</html>
